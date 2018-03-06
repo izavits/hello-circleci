@@ -1,0 +1,23 @@
+{
+  "name": "hello-circleci",
+  "version": "1.0.0",
+  "description": "Test project to experiment with CircleCI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izavits/hello-circleci.git"
+  },
+  "author": "izavits <izavits@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izavits/hello-circleci/issues"
+  },
+  "homepage": "https://github.com/izavits/hello-circleci#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
