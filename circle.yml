@@ -3,6 +3,24 @@ jobs:
   build:
     docker:
       - image: library/docker:1.12.6
+	environment:
+	  DOCKER_USERNAME: izavits
+	  DOCKER_IMAGE: izavits/hello-circleci
     steps:
       - checkout
-      - run: echo "A first hello"
+	  - setup_remote_docker:
+	      version: 17.07.0-ce
+          reusable: true
+          exclusive: false
+      - run: |
+	      docker info
+		  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASS"
+      - run:
+	      name: Build
+		  command: |
+		    docker build --rm=false --pull --tag ${DOCKER_IMAGE}:${CIRCLE_SHA1} .
+	  - deploy:
+	      command: |
+		    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASS"
+		    docker push ${DOCKER_IMAGE}:${CIRCLE_SHA1}
+			
